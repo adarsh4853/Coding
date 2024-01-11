@@ -58,9 +58,8 @@ void run_case()
         while (tests-- > 0)
             run_case();
     }
-    if(n < 5)
-    {
-        cout<<"NO";
-        return;
-    }
-    
+    // if(n < 5)
+    // {
+    //     cout<<"NO";
+    //     return;
+    // }
