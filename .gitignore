@@ -1,0 +1,6 @@
+
+.cph/
+.vscode/
+*.exe
+*.out
+temp.cpp
