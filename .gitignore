@@ -1,6 +1,7 @@
 .gitignore
 .cph/
 .vscode/
+codeforces/*.exe
 *.exe
 *.out
 temp.cpp
