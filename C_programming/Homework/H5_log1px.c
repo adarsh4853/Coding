@@ -1,29 +1,38 @@
-//print log(1+x)  value
-//log(1+x)=x-x^2/2 +x^3/3 -x^4/4 +......... 
-#include<stdio.h>
+// #include<stdio.h>
 
+// int main()
+// {
+// 	float x, term, sum = 0;
+// 	int n;
+	
+// 	printf("Enter x: ");
+// 	scanf("%f", &x);
+	
+// 	x = x - 1;
+	
+// 	printf("Enter number of terms: ");
+// 	scanf("%d", &n);
+	
+// 	term = x;
+	
+// 	for(int i = 1; i <= n; i++)
+// 	{
+// 		sum += term;
+// 		term *= -x / i;
+// 	}
+	
+// 	printf("The value of log(1+x) is: %f\n", sum);
+// 	printf("The value of log(1+x) using math.h is: %f\n", log(1 + x));
+// 	return 0;
+// }
+
+#include<stdio.h>
 int main()
 {
-	float x, term, num,sum=0;
+	int j=0,t=1;
+	// j=(printf("%d\n",j),scanf("%d%d",&j,&t));
+	// t=(printf("hi!\t"),printf("%d",t));
+	// printf("%d\n",j);
 	
-	printf ("enter x");
-	scanf("%f",&x);
-	
-	x = x-1;
-	
-	int n,y=1;
-	printf ("enter no of terms");
-	scanf("%d",&n);
-	
-	num=x;
-	
-	for(int i=1;i<=n;i++)
-	{
-		term=y*(num/i);
-		sum=sum+term;
-		y=-y;
-	}
-	printf("the  value of log(1+x) is :%f\n",sum);
-
-    	return 0;
+	return 0;
 }
