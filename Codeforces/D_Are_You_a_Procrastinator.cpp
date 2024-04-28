@@ -1,37 +1,14 @@
-#include <algorithm>
-#include <array>
-#include <bitset>
-#include <cassert>
-#include <chrono>
-#include <cmath>
-#include <cstdint>
-#include <cstring>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <map>
-#include <numeric>
-#include <queue>
-#include <random>
-#include <set>
-#include <vector>
+#include<bits/stdc++.h>
 using namespace std;
+#define int long long
 
-void run_case(int& tttt) 
-{
-    //cout<<"Case"<<" : "<<tttt<<"\n";
+void runCase(){
 
-    //Your code here
+  cout<<1;
 
 }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main(){
 
-    int tests = 1;
-    cin >> tests;
-
-    for(int i=0;i<tests;i++)
-        run_case(i);
+  return 0;
 }
