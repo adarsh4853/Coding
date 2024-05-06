@@ -22,6 +22,11 @@ int main()
     pair<int, int> p = {2, 3};
     cout << "Pairs : " << p.first << " " << p.second << endl;
 
+    //Inserting at random index(assuming capacity is not full) -> O(n)
+    //Search -> O(n) for Unsorted, O(log n) for Sorted
+    //Delete at random index -> O(n)
+    //Get and update i-th element -> O(1)
+
 // Vectors
     vector<int> v1;
     vector<double> v2{5, 1.6}; // means v2={1.6,1.6,1.6,1.6,1.6}
@@ -39,6 +44,12 @@ int main()
     v1.pop_back(); // deletes last element
 
     v1.clear(); // clears the array(make size 0 but not capacity)
+
+    cout<<*max_element(v2.begin(),v2.end());//for maximum element // Remember this gives pointer
+    cout<<*min_element(v2.begin(),v2.end());//for minimum element // Time complexity -> O(n)
+
+
+    //Average Time Complexity of inserting a element(push_back) in vector -> O(n)
 
     // v.front(),v.back(),v.empty(),v.at(i)
 
