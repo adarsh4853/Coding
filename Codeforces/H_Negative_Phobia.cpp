@@ -1,43 +1,34 @@
-#include <algorithm>
-#include <array>
-#include <bitset>
-#include <cassert>
-#include <chrono>
-#include <cmath>
-#include <cstdint>
-#include <cstring>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <map>
-#include <numeric>
-#include <queue>
-#include <random>
-#include <set>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
+#define int long long
+#define pb push_back
+#define all(v) (v).begin(), (v).end()
+const int inf = (int)1e18;
+const int mod = 1e9 + 7;
 
-void run_case(int& tttt) 
+void runCase()
 {
-    //cout<<"Case"<<" : "<<tttt<<"\n";
+   int n;
+   cin>>n;
+   vector<int> v(n);
+   for(int i=0;i<n;i++) cin>>v[i];
 
-    int n;
-    cin >> n;
-    vector<int> a(n,0);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    
+   
 }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int32_t main()
+{
+   ios::sync_with_stdio(false);
+   cin.tie(nullptr);
 
-    int tests = 1;
-    cin >> tests;
+   int tests = 1;
+   cin >> tests;
 
-    for(int i=0;i<tests;i++)
-        run_case(i);
+   for (int i = 1; i <= tests; i++)
+   {
+      // cout << "#Case " << i << ": \n";
+      runCase();
+   }
+
+   return 0;
 }
