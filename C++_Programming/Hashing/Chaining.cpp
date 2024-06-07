@@ -7,8 +7,10 @@ struct myhash
     list<int> *table;
 
     // Constructor to initialize the hash table with the given number of buckets
-    myhash(int b) : bucket(b) {
-        table = new list<int>[bucket];
+    myhash(int b)
+    {
+        bucket = b;
+        table=new list<int>[bucket];
     }
 
     // Destructor to deallocate the memory used by the hash table

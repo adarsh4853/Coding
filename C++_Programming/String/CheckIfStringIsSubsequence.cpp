@@ -11,7 +11,21 @@ bool checkSubsq(string s,string t,int ns=0,int nt=0)
     else return checkSubsq(s,t,ns,nt+1);
 }
 
-//Iterative is always better
+//Iterative is better
+bool isSubsequence(string s, string t) {
+        int ns=s.size(),nt=t.size();
+        int i=0,j=0,flag=0;
+        while(i<nt && j<ns)
+        {
+            if(t[i]==s[j]) 
+            {
+                i++,j++;
+            }
+            else i++;
+        }
+        if(j==ns) return true;
+        else return false;
+    }
 
 int main()
 {

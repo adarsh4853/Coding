@@ -22,7 +22,7 @@ node *insertEnd(node *head, int val)
     node *curr = head;
 
     //Get to the last node of the linked list to change its pointer to temp
-    while (curr->next != NULL)
+    while (curr->next != NULL)//Use this condition to go to the last node, don't use curr!=NULL becuase then you will go to NULL not on last node
         curr = curr->next;
     curr->next = temp;
     return head;

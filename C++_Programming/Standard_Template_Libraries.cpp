@@ -65,10 +65,18 @@ int main()
     d.erase(d.begin() + 3);              // erases single element
                                          // v.begin()-> iterator to the first element,v.end()-> iterator to the last element
 
+    for(auto it:d)
+    {
+        cout << d.at(i) << '\n';
+    }
+
     for (int i = 0; i < d.size(); i++)
     {
         cout << d.at(i) << '\n';
     }
+    auto it=d.begin();
+    it++;
+    d.insert(it,83);
 
     // d.front(),d.back(),d.empty()
 
@@ -92,7 +100,9 @@ int main()
 
     cout << "Size of stack: " << s.size() << endl; // 3
 
-    // s.empty()
+    cout << s.empty() << '\n';
+    //push,pop,top,size,empty all are O(1) independent of whether they are implemented on list,vector or deque.
+    //By default they are implemented using deque
 
     // queue
     // first in-first out,ex-a line of humans
@@ -103,9 +113,12 @@ int main()
     q.push(7.4);
 
     cout << "first element: " << q.front() << endl; // 1.000000
+    cout << "last element: " << q.back() << endl; // 7.400000
     q.pop();                                        // pops first element i.e. 1
 
     // size,empty
+    // All operations has O(1) TC if queue is implemented using list or deque(vector doesn't provide pop_front in O(1))
+    // By default it is implemented using deque
 
     // priority queue
     // gives maximum or minimum element
