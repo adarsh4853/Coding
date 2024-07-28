@@ -67,7 +67,7 @@ int main()
 
     for(auto it:d)
     {
-        cout << d.at(i) << '\n';
+        cout << d.at(it) << '\n';
     }
 
     for (int i = 0; i < d.size(); i++)
@@ -157,20 +157,23 @@ int main()
     // empty
 
     // set
-    // inserts unique element and ggives element in a ordered way
+    // inserts unique element and gives element in a ordered way
+    // Set is implemented using RED-BLACK Tree
 
-    set<int> s1 = {1, 1, 1, 2, 2, 1, 2, 3, 2, 2, 1, 2, 1};
+    set<int> s1 = {1, 1, 1, 2, 2, 1, 2, 3, 2, 2, 1, 2, 1};//FOr element in increasing order
+    set<int,greater<int>> s2;//For elements in decreasing order
 
     s1.insert(4);
     s1.insert(4);
     s1.insert(7); // s={1,2,3,4,7}
 
-    s1.erase(s1.begin()); // only one element erased//s.begin+i is not working
+    s1.erase(s1.begin()); // only one element erased//s.begin()x+i is not working
 
-    set<int>::iterator it = s1.begin(); // iterator to the first element
-    it++;                               // it=it+1 is not supported in set and map
-    advance(it, 2);                     // use this instead of it=it+2
-    s1.erase(it);                       // s={2,3,4}
+    set<int>::iterator it1 = s1.begin(); // iterator to the first element
+    it1++;                               // it=it+1 is not supported in set and map
+    advance(it1, 2);                     // use this instead of it=it+2
+    s1.erase(it1);                       // s={2,3,4}
+    s1.erase(it1,s1.end());              //Erases all the elements from it1 till end
 
     // for printing
     for (auto it = s1.begin(); it != s1.end(); ++it)
@@ -187,7 +190,10 @@ int main()
     auto itr = s1.find(6); // s1.find(6) returns the iterator to that element if found,else returns s1.end()
     cout << "3 is present at itr : " << *itr << endl;
 
-    // insert,find,erase,count-> O(log n)
+    // begin,end,rbegin,rend,cbegin,cend,crbegin,crend,size,empty -> O(1)
+    // insert,find,erase(value),count,lower_bound,upper_bound -> O(log n)
+    // erase(it) -> Amortised O(1) (average case time complexity)
+
     // map
 
     map<float, string> m1;
@@ -196,9 +202,13 @@ int main()
     m1[1.2f] = "hello";   // 1.1f called key
     m1[2.6f] = "buffalo"; // 2.6 is treated as double thats why use 2.6f where f represents float
 
-    m2["hello"] = 6;
+    m2["hello"] = 6;//Inserts a item in map
     m2["blow"] = 2;
     m2["world"] = 3724;
+    cout<<m2["Play"]<<'\n';
+    //If member accessed is not present in map then,
+    //1. If using square bracket then it inserst that item in the map
+    //2. If accessed using at function then it throws an exception
 
     m1.insert({9.1f, "flow"});
 

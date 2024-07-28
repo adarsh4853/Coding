@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+//Leetcode -> Sort array by increasing freqency
 
 struct point
 {
@@ -16,7 +17,7 @@ int main()
 {
     vector<point> v = {{1, 62}, {9, 62}, {8, 2}, {98, 18}};
     sort(v.begin(), v.end(), mycmp);
-
+    // v.insert(v.end(),5,{0,0}); return elements of certain ferquency at once
     for (int i = 0; i < v.size(); i++)
         cout << "{" << v[i].x << "," << v[i].y << "} ";
     return 0;
