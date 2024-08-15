@@ -35,23 +35,29 @@ void bredthFirst(node *root)
 }
 
 // Better way to implement(for different questions)
-void bredthFirstModified(node *root)
+vector<vector<int>> bredthFirstModified(node *root)
 {
+    vector<vector<int>> bfs;
     queue<node *> q;
     q.push(root);
     int cnt;
     while (!q.empty())
     {
         cnt = q.size();
+        vector<int> temp;
         for (int i = 0; i < cnt; i++)
         {
             node *curr = q.front();
-            cout << curr->data << " ";
+            temp.push_back(curr->data);
             q.pop();
-            if (curr->left != NULL) q.push(curr->left);
-            if (curr->right != NULL) q.push(curr->right);
+            if (curr->left != NULL)
+                q.push(curr->left);
+            if (curr->right != NULL)
+                q.push(curr->right);
         }
+        bfs.push_back(temp);
     }
+    return bfs;
 }
 
 int main()

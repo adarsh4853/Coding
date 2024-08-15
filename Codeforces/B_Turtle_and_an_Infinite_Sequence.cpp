@@ -5,31 +5,25 @@ using namespace std;
 //const int inf = (int)1e18;
 //const int mod = 1e9 + 7;
 
+// vector<int> v;
+
+int func(int n)
+{
+    if(n==0) return n|n+1;
+    else return n-1|n|n+1;
+}
+
+
 void runCase()
 {
-    int mn=min({a,b,c});
-    a-=mn;
-    b-=mn;
-    c-=mn;
-    if(a==0) 
+    int n,sec;
+    cin>>n>>sec;
+    int a=n+sec,b=max(n-sec,0LL),ans=0;
+    for(int i=sec;i>=0;i--)
     {
-        mn=min({b,c});
-        b-=mn;
-        c-=mn;
-        if(max(b,c)>)
+        ans=ans|func(ans-1)|func(ans+1);
     }
-    else if(b==0) 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
-    }
-    else 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
-    }
+    
 }
 
 int32_t main()
@@ -39,6 +33,8 @@ int32_t main()
 
     int tests = 1;
     cin >> tests;
+
+    // fill();
 
     for (int i = 1; i <= tests; i++)
         runCase();

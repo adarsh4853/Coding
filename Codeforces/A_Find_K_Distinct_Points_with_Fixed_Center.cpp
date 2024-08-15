@@ -7,29 +7,15 @@ using namespace std;
 
 void runCase()
 {
-    int mn=min({a,b,c});
-    a-=mn;
-    b-=mn;
-    c-=mn;
-    if(a==0) 
+    int x,y,k;
+    cin>>x>>y>>k;
+    int sumx=x*k,sumy=y*k;
+    for(int i=1;i<k;i++)
     {
-        mn=min({b,c});
-        b-=mn;
-        c-=mn;
-        if(max(b,c)>)
+        cout<<i<<' '<<i<<'\n';
     }
-    else if(b==0) 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
-    }
-    else 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
-    }
+    int currsum=(k-1)*k/2;
+    cout<<sumx-currsum<<' '<<sumy-currsum<<'\n';
 }
 
 int32_t main()

@@ -7,29 +7,11 @@ using namespace std;
 
 void runCase()
 {
-    int mn=min({a,b,c});
-    a-=mn;
-    b-=mn;
-    c-=mn;
-    if(a==0) 
-    {
-        mn=min({b,c});
-        b-=mn;
-        c-=mn;
-        if(max(b,c)>)
-    }
-    else if(b==0) 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
-    }
-    else 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
-    }
+    vector<int> v(3);
+    cin>>v[0]>>v[1]>>v[2];
+    sort(v.begin(),v.end());
+    if(v[2]>v[1]+v[0]+1) cout<<"NO"<<'\n';
+    else cout<<"YES"<<'\n';
 }
 
 int32_t main()

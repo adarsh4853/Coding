@@ -7,28 +7,16 @@ using namespace std;
 
 void runCase()
 {
-    int mn=min({a,b,c});
-    a-=mn;
-    b-=mn;
-    c-=mn;
-    if(a==0) 
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++) cin>>v[i];
+    for(int i=0;;i++)
     {
-        mn=min({b,c});
-        b-=mn;
-        c-=mn;
-        if(max(b,c)>)
-    }
-    else if(b==0) 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
-    }
-    else 
-    {
-        mn=min(a,b);
-        a-=mn;
-        b-=mn;
+        for(int j=0;;j++)
+        {
+            
+        }
     }
 }
 
