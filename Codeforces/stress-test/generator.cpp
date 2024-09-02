@@ -33,12 +33,12 @@ void runCase(int &testCase)
     // cout << "#Case " << testCase << ": \n";
     int t = rnd(1, 1);
     cout << t << "\n";
-    // int n = rnd(1, 10);
-    // cout << n << "\n";
-    int a = rnd(1, 10);
-    cout << a << "\n";
-    int b = rnd(1, 10);
-    cout << b << "\n";
+    int n = rnd(10, 99);
+    cout << n << "\n";
+    // int a = rnd(1, 10);
+    // cout << a << "\n";
+    // int b = rnd(1, 10);
+    // cout << b << "\n";
     
     // int k = rnd(1, 10);
     // cout << k << "\n";

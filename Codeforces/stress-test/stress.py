@@ -7,34 +7,37 @@ from src.compile_run import compile, run
 
 path = {
     "incorrect_files": [
-        ".\\sol.cpp", 
+        "./sol.cpp",
     ],
-    "correct_file": ".\\brute.cpp",  
-    "in_file": ".\\src\\in.txt",  
-    "out_file": ".\\src\\out.txt",  
-    "wa_file": ".\\src\\wa.txt",  
-    "testcase_file": ".\\generator.cpp",  
-    "validator_file": ".\\src\\validator.cpp",  
+    "correct_file": "./brute.cpp",
+    "in_file": "./src/in.txt",
+    "out_file": "./src/out.txt",
+    "wa_file": "./src/wa.txt",
+    "testcase_file": "./generator.cpp",
+    "validator_file": "./src/validator.cpp",
 }
 
+# remove extra spaces and new lines
 def adjust(out):
-    """Remove extra spaces and new lines from output."""
     out = out.split('\n')
     res = ""
     for o in out:
         o = o.strip()
-        if o != "" and o != "\n":
+        if(o != "" and o != "\n"):
             res += o + "\n"
     return res.strip()
 
 def process():
     test_case = 1
-    while True:
+    while(True):
         try:
             cprint(f"Case # {test_case} : ", end='', clr="yellow")
 
             # generate test case
             std_input = run(path["testcase_file"]).stdout.strip()
+
+            # testcase validator
+            # run(path["validator_file"], std_input)
 
             # store all outputs
             std_output = adjust(run(path["correct_file"], std_input).stdout)
@@ -53,11 +56,11 @@ def process():
                 cprint("Wrong Answer", clr="red")
 
                 # print input
-                cprint("Input", clr="cyan")
+                cprint("Input: ", clr="cyan")
                 print(std_input)
 
                 # print output
-                cprint("\nOutput", clr="cyan")
+                cprint("\nCorrect Output: ", clr="cyan")
                 print(std_output)
 
                 # print all outputs
@@ -65,7 +68,7 @@ def process():
                     cprint(f'\n{path["incorrect_files"][i]}', clr="cyan")
                     print(outputs[i])
 
-                # print different files
+                # print diffrent files
                 cprint("\nMismatched files", clr="yellow")
                 for i in range(len(path["incorrect_files"])):
                     if outputs[i] != std_output:
@@ -97,10 +100,10 @@ def process():
             else:
                 cprint("Accepted", clr="green")
                 if test_case <= 5:
-                    print("Input")
+                    print("Input: ")
                     print(std_input)
 
-                    print("\nOutput")
+                    print("\nCorrect Output: ")
                     print(std_output)
 
                     for i in range(len(path["incorrect_files"])):
@@ -119,7 +122,10 @@ if __name__ == "__main__":
     # compile test case file
     compile(path["testcase_file"])
 
-    # compile all C++ files
+    # compile validator file
+    # compile(path["validator_file"])
+
+    # compile all java and c++ file
     compile(path["correct_file"])
     for file in path["incorrect_files"]:
         compile(file)
@@ -139,9 +145,9 @@ if __name__ == "__main__":
     print()
     process()
 
-    # Remove all .exe files in the current directory
+    # Remove all .out files in the current directory
     for file in os.listdir():
-        if file.endswith(".exe"):
+        if file.endswith(".out"):
             os.remove(file)
             print(f"Removed {file}")
 
