@@ -12,14 +12,16 @@ inline int64_t rnd(int64_t l = 0, int64_t r = 1E9)
     // return std::uniform_real_distribution<long double>(l, r)(rng);
 }
 
-std::string generateRandomString(int n) {
-    std::string alphabet = "01";
+std::string generateRandomString(int n)
+{
+    std::string alphabet = "AB";
     std::string randomString;
     randomString.reserve(n);
 
     std::srand(std::time(0)); // Seed the random number generator
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i)
+    {
         randomString += alphabet[std::rand() % alphabet.size()];
     }
 
@@ -31,26 +33,24 @@ void runCase(int &testCase)
     // cout << "#Case " << testCase << ": \n";
     int t = rnd(1, 1);
     cout << t << "\n";
-    int n = rnd(1,50);
-    cout << n << "\n";
-    int m=rnd(1,50);
-    // while(n>m) m=rnd(1,200);
-    cout << m << "\n";
-    // int l = rnd(1,8);
-    // cout << l << "\n";
-    // int r = rnd(8,20);
-    // cout << r << "\n";
-    // vector<int> v(n);
+    // int n = rnd(1, 10);
+    // cout << n << "\n";
+    int a = rnd(1, 10);
+    cout << a << "\n";
+    int b = rnd(1, 10);
+    cout << b << "\n";
+    
+    // int k = rnd(1, 10);
+    // cout << k << "\n";
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << ((char)(rnd(0, 1) + 'A'));
+    // }
     // for(int i=0;i<n;i++)
     // {
-    //     v[i]=rnd(1,10);
+    //     cout<<rnd(1,100)<<' ';
     // }
-    // sort(v.begin(),v.end());
-
-    // for(int i=0;i<n;i++)
-    //     cout<<v[i]<<' ';
-    // // cout<<generateRandomString(n)<<'\n';
-    cout << "\n";
+    // cout << "\n";
 }
 
 int main()

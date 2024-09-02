@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 //Partition -> Put element less than v[ind] before ind and element greter than v[ind] after ind

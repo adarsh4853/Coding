@@ -50,10 +50,8 @@ vector<vector<int>> bredthFirstModified(node *root)
             node *curr = q.front();
             temp.push_back(curr->data);
             q.pop();
-            if (curr->left != NULL)
-                q.push(curr->left);
-            if (curr->right != NULL)
-                q.push(curr->right);
+            if (curr->left != NULL) q.push(curr->left);
+            if (curr->right != NULL) q.push(curr->right);
         }
         bfs.push_back(temp);
     }

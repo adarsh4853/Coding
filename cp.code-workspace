@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"name": "Codeforces",
+			"path": "Codeforces"
+		},
+		{
+			"name": "C++_Programming",
+			"path": "C++_Programming"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"stdio.h": "c",
+			"iosfwd": "cpp"
+		}
+	}
+}

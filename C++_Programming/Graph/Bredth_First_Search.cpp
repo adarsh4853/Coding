@@ -1,42 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//BFS for graph -> print source vertex then print its friends then print their friends
+// BFS for graph -> print source vertex then print its friends then print their friends
+// Storing levels while bfs gives shortest path for every vertex
 
-//TC -> O(v+E), v = number of vertices, E = number of edges
+// TC -> O(v+E), v = number of vertices, E = number of edges
 
 vector<int> ans;
-vector<int> bfsOfGraph(vector<int> adj[], int source,vector<bool> &visited) // s=source node
+vector<int> bfsOfGraph(vector<int> adj[], int source, vector<bool> &visited) // s=source node
 {
     queue<int> q;
     q.push(source);
-    visited[source] = true;//Vertex that has pushed into queue should marked as visited
+    visited[source] = true; // Vertex that has pushed into queue should marked as visited
     while (!q.empty())
     {
-        int u = q.front();
+        int v = q.front();
         q.pop();
-        ans.push_back(u);
-        for (int x : adj[u])//Traverse through that list
+        for (int u : adj[v])
         {
-            if (visited[x] == false)//If not visited push into queue and mark as visited
+            if (visited[u]==false)
             {
-                visited[x] = true;
-                q.push(x);
+                visited[u] = true;
+                q.push(u);
+                // distance[u] = distance[v] + 1;
+                // parent[u] = v;
             }
         }
     }
     return ans;
 }
 
-//Use when source is not given and graphs are not connected
-void BFS(vector<int> adj[],int v)
+// Use when source is not given and graphs are not connected
+void BFS(vector<int> adj[], int v)
 {
-    vector<bool> visited(v + 1);//Make a visited array for undirected graph so that we don't print that vertex again
-    for(int i=0;i<v;i++) 
+    vector<bool> visited(v + 1); // Make a visited array for undirected graph so that we don't print that vertex again
+    for (int i = 0; i < v; i++)
     {
-        if(visited[i]==false)
+        if (visited[i] == false)
         {
-            bfsOfGraph(adj,i,visited);
+            bfsOfGraph(adj, i, visited);
         }
     }
 }

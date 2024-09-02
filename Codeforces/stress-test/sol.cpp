@@ -7,57 +7,29 @@ using namespace std;
 
 void runCase()
 {
-    int n,k;
-    cin>>n>>k;
-    if(k%2!=0)
+    int a,b;
+    cin>>a>>b;
+    if(a%2==0 && b%2==0)
     {
-        cout<<"No"<<'\n';
+        cout<<"YES"<<'\n';
         return;
     }
-    if(((n%2==0) && (k>(n/2)*n)) || ((n&1) && (k>((n-1)+((n-1)*(n-1)/2))))) 
+    vector<int> v;
+    for(int i=0;i<a;i++)
     {
-        cout<<"No"<<'\n';
-        return;
+        v.push_back(1);
     }
-    vector<int> ans(n);
-    if(k<=((n-1)*2))
+    for(int i=0;i<b;i++)
     {
-        for(int i=1;i<=n;i++)
-        {
-            if((i-1)==k/2) 
-            {
-                ans[i-1]=1;
-                ans[0]=i;
-                break;
-            }
-        }
-        cout<<"Yes"<<'\n';
-        for(int i=1;i<=n;i++) 
-        {
-            if(ans[i-1]==0) ans[i-1]=i;
-            // cout<<ans[i-1]<<' ';
-        }
-        // cout<<'\n';
-        return;
+        v.push_back(2);
     }
-    else
+    int sum=0,ans=a*1+b*2;
+    for(auto &e:v)
     {
-        for(int i=1;i<=n;i++) ans[i-1]=i;
-        int i=0,j=n-1;
-        while(i<j)
-        {
-            k-=2*(ans[j]-ans[i]);
-            if(k>=0) 
-            {
-                swap(ans[i],ans[j]);
-                i++;j--;
-            }
-            else break;
-        }
-        cout<<"Yes"<<'\n';
-        // for(int i=0;i<n;i++) cout<<ans[i]<<' ';
-        // cout<<'\n';
+        sum+=e;
+        if(2*sum==ans) {cout<<"YES"<<'\n';return;}
     }
+    cout<<"NO"<<'\n';
 }
 
 int32_t main()

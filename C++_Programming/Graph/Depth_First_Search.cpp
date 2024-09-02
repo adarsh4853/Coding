@@ -3,7 +3,7 @@ using namespace std;
 
 vector<int> ans;
 
-//TC -> O(v+E)
+//TC -> O(V+E)
 void dfsOfGraph(vector<int> adj[], int source, vector<bool> &visited)
 {
     ans.push_back(source);
