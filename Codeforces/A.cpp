@@ -9,7 +9,7 @@ void runCase()
 {
     int n;
     cin>>n;
-    cout<<n%10+n/10<<'\n';
+    cout<<!((n&(n-1))==0)<<'\n';
 }
 
 int32_t main()
@@ -21,6 +21,9 @@ int32_t main()
     cin >> tests;
 
     for (int i = 1; i <= tests; i++)
+    {
+        // cout << "#Case " << i << ": \n";
         runCase();
+    }
     return 0;
 }

@@ -8,8 +8,9 @@
 7. Functions ensure_fact, fact, inv_fact: These functions are used to ensure that the precomputed factorials and their inverses are available up to a certain value n. They compute and store these values as needed.
 8. Function calc_c: This function computes the binomial coefficient "n choose k" modulo mod using precomputed factorials and their inverses.
 */
-#include <bits/stdc++.h>
-int mod = 1000000007;
+#include<bits/stdc++.h>
+using namespace std;
+const int mod = 1000000007;
 struct mint {
     int value = 0;
 
