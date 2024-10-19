@@ -1,38 +1,47 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long
+// #define int long long
 
-//const int inf = (int)1e18;
-//const int mod = 1e9 + 7;
+// const int inf = (int)1e18;
+// const int mod = 1e9 + 7;
+
+bool mycmp(pair<int, int> x, pair<int, int> y)
+{
+    if (x.first == y.first)
+        return x.second < y.second;
+    else
+        return x.first < y.first;
+}
 
 void runCase()
 {
-    int n,m,y;
-    cin>>n>>m>>y;
-    vector<int> a(n),b(m-1);
-    for(int i=0;i<n;i++) cin>>a[i];
-    for(int i=0;i<m-1;i++) cin>>b[i];
-    sort(a.begin(),a.end());
-    int curr=0;
-    for(int i=0;i<m-1;i++)
+    int n;
+    cin >> n;
+    vector<pair<int,int>> v;
+    set<pair<int, int>> ss;
+    for (int i = 0; i < n; i++)
     {
-        auto it=upper_bound(a.begin(),a.end(),b[i]);
-        if(it==a.begin()) continue;
-        it--;
-        int num=it-a.begin()+1;
-        curr+=num;
+        int x, y;
+        cin >> x >> y;
+        v.push_back({x,y});
+        // ss.insert({x, y});
     }
-    if(curr+n<y) cout<<-1<<'\n';
-    else 
+    sort(v.begin(),v.end(),mycmp);
+    ss.insert(v[0]);
+    for(int i=1;i<n;i++)
     {
-        int num=y-curr;
-        if(num<=0) cout<<0<<'\n';
-        int temp=0;
-        for(int i=0;i<n;i++)
+        if((v[i].first>=v[i-1].first && v[i].first<=v[i-1].second) || (v[i-1].second>=v[i].first && v[i-1].second<=v[i].second))
         {
-            temp++;
-            if(temp==num) {cout<<a[i]<<'\n';return;}
+            ss.erase(ss.find({v[i-1]}));
+            v[i]={min(v[i].first,v[i-1].first),max(v[i].second,v[i-1].second)};
+            ss.insert(v[i]);
         }
+        else ss.insert(v[i]);
+    }
+    cout<<ss.size()<<'\n';
+    for(auto &x:ss)
+    {
+        cout<<x.first<<' '<<x.second<<'\n';
     }
 }
 

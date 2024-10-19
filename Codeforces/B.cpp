@@ -7,34 +7,18 @@ using namespace std;
 
 void runCase()
 {
-    int n,q;
-    cin>>n>>q;
-    vector<multiset<int>> v(n+1);
-    while(q--)
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++) cin>>v[i];
+    vector<int> a,b;
+    for(int i=0;i<n;i++)
     {
-        int a;
-        cin>>a;
-        if(a==1)
-        {
-            int i,x;
-            cin>>i>>x;
-            v[i].insert(x);
-        }
-        else
-        {
-            int i;
-            cin>>i;
-            if(v[i].size()==0) cout<<-1<<' ';
-            else
-            {
-                auto it=v[i].end();
-                --it;
-                cout<<*it<<' ';
-                v[i].erase(it);
-            }
-        }
+        if(v[i]%2==0) a.push_back(v[i]);
+        else b.push_back(v[i]);
     }
-    cout<<'\n';
+    if(is_sorted(a.begin(),a.end()) && is_sorted(b.begin(),b.end())) cout<<"YES\n";
+    else cout<<"NO\n";
 }
 
 int32_t main()

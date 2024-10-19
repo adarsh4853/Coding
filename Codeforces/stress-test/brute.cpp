@@ -1,38 +1,38 @@
-/**
- *    author:  tourist
- *    created: 29.09.2024 08:39:36
-**/
 #include <bits/stdc++.h>
-
 using namespace std;
+#define int long long
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-  int tt;
-  cin >> tt;
-  while (tt--) {
-    int64_t b, c, d;
-    cin >> b >> c >> d;
-    int64_t a = 0;
-    bool fail = false;
-    for (int bit = 0; bit < 60; bit++) {
-      int bb = (b >> bit) & 1;
-      int cc = (c >> bit) & 1;
-      int dd = (d >> bit) & 1;
-      vector<int> cand;
-      for (int aa = 0; aa < 2; aa++) {
-        if ((aa | bb) - (aa & cc) == dd) {
-          cand.push_back(aa);
-        }
-      }
-      if (cand.empty()) {
-        fail = true;
-        break;
-      }
-      a |= int64_t(cand[0]) << bit;
+//const int inf = (int)1e18;
+//const int mod = 1e9 + 7;
+
+void runCase()
+{
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++) cin>>v[i];
+    vector<int> a,b;
+    for(int i=0;i<n;i++)
+    {
+        if(v[i]%2==0) a.push_back(v[i]);
+        else b.push_back(v[i]);
     }
-    cout << (fail ? -1 : a) << '\n';
-  }
-  return 0;
+    if(is_sorted(a.begin(),a.end()) && is_sorted(b.begin(),b.end())) cout<<"YES\n";
+    else cout<<"NO\n";
+}
+
+int32_t main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int tests = 1;
+    cin >> tests;
+
+    for (int i = 1; i <= tests; i++)
+    {
+        // cout << "#Case " << i << ": \n";
+        runCase();
+    }
+    return 0;
 }

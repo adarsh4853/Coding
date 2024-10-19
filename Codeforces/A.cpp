@@ -7,9 +7,11 @@ using namespace std;
 
 void runCase()
 {
-    int n;
-    cin>>n;
-    cout<<!((n&(n-1))==0)<<'\n';
+    int n,q;
+    cin>>n>>q;
+    int temp=n/q;
+    temp=q*temp;
+    cout<<temp*temp<<'\n';
 }
 
 int32_t main()

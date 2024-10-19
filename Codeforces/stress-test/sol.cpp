@@ -5,41 +5,34 @@ using namespace std;
 //const int inf = (int)1e18;
 //const int mod = 1e9 + 7;
 
-string decimalToBinary(int n)
-{
-    string s = "";
-    int i = 0;
-    while (n > 0)
-    {
-        s = to_string(n % 2) + s;
-        n = n / 2;
-        i++;
-    }
-    return s;
-}
-
-int binaryToDecimal(string n)
-{
-    string num = n;
-    int dec_value = 0;
-    int base = 1;
-    int len = num.length();
-    for (int i = len - 1; i >= 0; i--)
-    {
-        if (num[i] == '1')
-            dec_value += base;
-        base = base * 2;
-    }
-    return dec_value;
-}
-
 void runCase()
 {
-    int b,c,d;
-    cin>>b>>c>>d;
-    int num=(b^d);
-    if((num|b)-(num&c)==d) cout<<num<<'\n';
-    else cout<<-1<<'\n';
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++) cin>>v[i];
+    vector<int> temp(v);
+    sort(v.begin(),v.end());
+    int i=0,j=0;
+    while(i<n && j<n)
+    {
+        while(i<n && temp[i]%2==0) i++;
+        while(j<n && v[j]%2==0) j++;
+        if(i==n || j==n) break;
+        if(v[j]!=temp[i]) {cout<<"NO"<<'\n';return;}
+        else {i++;j++;}
+    }
+    i=0,j=0;
+    while(i<n && j<n)
+    {
+        while(i<n && temp[i]%2!=0) i++;
+        while(j<n && v[j]%2!=0) j++;
+        if(i==n || j==n) break;
+        // cout<<v[j]<<' '<<temp[i]<<'\n';
+        if(v[j]!=temp[i]) {cout<<"NO"<<'\n';return;}
+        else {i++;j++;}
+    }
+    cout<<"YES"<<'\n';
 }
 
 int32_t main()

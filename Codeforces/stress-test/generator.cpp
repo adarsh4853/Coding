@@ -34,12 +34,12 @@ void runCase(int &testCase)
     // cout << "#Case " << testCase << ": \n";
     int t = rnd(1, 1);
     cout << t << "\n";
-    int n = rnd(1, 100000000000000000);
+    int n = rnd(1, 10);
     cout << n << " ";
-    int x = rnd(1, 100000000000000000);
-    cout << x << " ";
-    int y = rnd(1, 100000000000000000);
-    cout << y << "\n";
+    // int x = rnd(1, 100000000000000000);
+    // cout << x << " ";
+    // int y = rnd(1, 100000000000000000);
+    // cout << y << "\n";
     // int a = rnd(1, 10);
     // cout << a << "\n";
     // int b = rnd(1, 10);
@@ -51,10 +51,10 @@ void runCase(int &testCase)
     // {
     //     cout << ((char)(rnd(0, 1) + 'A'));
     // }
-    // for(int i=0;i<n;i++)
-    // {
-    //     cout<<rnd(2,6)<<' ';
-    // }
+    for(int i=0;i<n;i++)
+    {
+        cout<<rnd(1,10)<<' ';
+    }
     // cout<<'\n';
     // for(int i=0;i<=n;i++)
     // {
