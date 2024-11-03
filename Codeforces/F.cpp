@@ -1,69 +1,71 @@
 #include <bits/stdc++.h>
 using namespace std;
-// #define int long long
+#define int long long
 
-// const int inf = (int)1e18;
-// const int mod = 1e9 + 7;
+//const int inf = (int)1e18;
+//const int mod = 1e9 + 7;
 
-bool mycmp(pair<int, int> x, pair<int, int> y)
-{
-    if (x.first == y.first)
-        return x.second < y.second;
-    else
-        return x.first < y.first;
-}
+// https://codeforces.com/problemset/problem/1941/D
 
 void runCase()
 {
-    int n;
-    cin >> n;
-    set<pair<int, int>> v;
-    for (int i = 0; i < n; i++)
+    int n,m,x,r;
+    cin>>n>>m>>x;
+    set<int> ss;
+    ss.insert(x);
+    char c;
+    while(m--)
     {
-        int x, y;
-        cin >> x >> y;
-        v.insert({x, y});
-    }
-    // sort(v.begin(),v.end(),mycmp);
-    int cnt = 0, id = 0;
-    vector<int> b;
-    vector<pair<int, int>> ans;
-    for (auto i = v.begin(); i != v.end(); i++)
-    {
-        if (i == v.begin())
-            continue;
-        auto prev = i;
-        prev--;
-        auto curr = i;
-        pair<int, int> p = *prev, c = *curr;
-        if (c.first >= p.first && c.first <= p.second)
+        cin>>r>>c;
+        if(c=='0')
         {
-            c.first = p.first;
-            c.second = max(p.second, c.second);
-            p=c;
+            vector<int> temp;
+            set<int> s1;
+            for(auto &it:ss)
+            {
+                temp.push_back(it);
+                if(it+r==n) s1.insert(n);
+                else s1.insert((it+r)%n);
+                // s1.insert((it-r+n)%n);
+            }
+            ss=s1;
+        }
+        else if(c=='1')
+        {
+            vector<int> temp;
+            set<int> s1;
+            for(auto &it:ss)
+            {
+                temp.push_back(it);
+                // s1.insert((it+r)%n);
+                if(it-r==0) s1.insert(n);
+                else s1.insert((it-r+n)%n);
+            }
+            ss=s1;
         }
         else
         {
-            b.push_back(id);
-            cnt++;
+            vector<int> temp;
+            set<int> s1;
+            for(auto &it:ss)
+            {
+                temp.push_back(it);
+                // s1.insert((it+r)%n);
+                if(it+r==n) s1.insert(n);
+                else s1.insert((it+r)%n);
+                // s1.insert((it-r+n)%n);
+                if(it-r==0) s1.insert(n);
+                else s1.insert((it-r+n)%n);
+            }
+            ss=s1;
         }
-        id++;
     }
-    for(int i=0;i<b.size();i++) cout<<b[i]<<' ';
-    cout<<'\n';
-    cout << cnt << '\n';
-    int z = 0;
-    id = 0;
-    for (auto &x : v)
+    cout<<ss.size()<<'\n';
+    for(auto &it:ss)
     {
-        if(id==b.size()) break;
-        if (b[id] == z)
-        {
-            cout << x.first << ' ' << x.second << '\n';
-            id++;
-        }
-        z++;
+        cout<<it<<' ';
     }
+    cout<<'\n';
 }
 
 int32_t main()

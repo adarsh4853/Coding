@@ -34,14 +34,28 @@ void runCase(int &testCase)
     // cout << "#Case " << testCase << ": \n";
     int t = rnd(1, 1);
     cout << t << "\n";
-    int n = rnd(1, 10);
-    cout << n << " ";
+    int n = rnd(3, 10);
+    cout << n << "\n";
     // int x = rnd(1, 100000000000000000);
     // cout << x << " ";
     // int y = rnd(1, 100000000000000000);
     // cout << y << "\n";
+    vector<int> ans;
+    for(int i=0;i<n;i++)
+    {
+        // cout<<rnd(1,10)<<' ';
+        ans.push_back(rnd(1,10));
+        // cout<<rnd(-10,-1)<<' '<<rnd(0,10)<<'\n';
+    }
+    sort(ans.begin(),ans.end());
+    for(int i=0;i<n;i++) cout<<ans[i]<<' ';
+    cout<<'\n';
     // int a = rnd(1, 10);
     // cout << a << "\n";
+    // for(int i=0;i<a;i++)
+    // {
+    //     cout<<rnd(1,n)<<' '<<rnd(1,50)<<'\n';
+    // }
     // int b = rnd(1, 10);
     // cout << b << "\n";
     
@@ -50,16 +64,16 @@ void runCase(int &testCase)
     // for (int i = 0; i < n; i++)
     // {
     //     cout << ((char)(rnd(0, 1) + 'A'));
-    // }
-    for(int i=0;i<n;i++)
-    {
-        cout<<rnd(1,10)<<' ';
-    }
-    // cout<<'\n';
-    // for(int i=0;i<=n;i++)
+    // vector<int> ans;
+    // while(1){
+    // for(int i=0;i<n;i++)
     // {
-    //     cout<<rnd(1,10)<<' ';
+    //     ans.push_back(rnd(1,10));
     // }
+    // if(accumulate(ans.begin(),ans.end(),0LL)<=a) break;}
+    // for(int i=0;i<n;i++) cout<<ans[i]<<' ';
+    // cout<<'\n';
+    // cout<<'\n';
     // cout << "\n";
 }
 

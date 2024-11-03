@@ -1,70 +1,93 @@
 #include <bits/stdc++.h>
 using namespace std;
-// #define int long long
+int64_t inf = (int64_t)1e+18;
+int mod = 1000000007;
+#define int long long
 
-//const int inf = (int)1e18;
-//const int mod = 1e9 + 7;
+// @author: siddhant139
 
-vector<int> ans;
-vector<vector<int>> scc;
-
-void dfsOfGraph(vector<vector<int>> adj, int source, vector<bool> &visited,int &mn,vector<int> &temp)
+void runCase(int &testcase)
 {
-    mn=min(mn,source);
-    temp.push_back(source);
-    // cout<<source<<' ';
-    visited[source] = true;
-    for (int x : adj[source])
-        if (visited[x] == false)
-            dfsOfGraph(adj, x, visited,mn,temp);
-}
-
-void dfs(vector<vector<int>> adj, int v)
-{
-    vector<bool> visited(v + 1);
-    for (int i = 1; i <= v; i++)
-    if (visited[i] == false)
-    {
-        vector<int> temp;
-        int mn=INT_MAX;
-        dfsOfGraph(adj, i, visited,mn,temp);
-        ans.push_back(mn);
-        scc.push_back(temp);
+    int n, k=0,m;
+    cin >> n >> m ;
+    vector<string> a(n);
+    for (int i=0;i<n;i++) {
+        cin >> a[i]; 
     }
-}
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j+1<m;j++){ 
+    //         cout << a[i][j];
+    //     }
+    //     cout << "\n";
+    // }
 
-void runCase()
-{
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n);
-    for(int i=0;i<n;i++) cin>>a[i];
-    vector<vector<int>> adj(n+1);
-    for(int i=1;i<=m;i++)
-    {
-        int u,v;
-        cin>>u>>v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+    for(int i=0;i<n;i++){
+
+        for(int j=0;j<m;j++){
+            if(a[i][j]=='1') {
+                if(i+1<n && j<m && a[i+1][j]=='5' ){
+                    if(i+2<n && j<m && a[i+2][j]=='4'){
+                        if(i+3<n && j<m && a[i+3][j]=='3') {
+                            k++;
+                        }
+                        if(i+2<n && j-1>=0 && a[i+2][j-1]=='3') k++;
+                    } 
+                    if(i+1<n && j-1>=0 && a[i+1][j-1]=='4'){
+                        if(i<n && j-1>=0 && a[i][j-1]=='3') k++;
+                        if(i+1<n && j-2>=0 && a[i+1][j-2]=='3') k++;
+                    }
+                }
+
+                if(i-1>=0 && j<m && a[i-1][j]=='5' ){
+                    if(i-2>=0 && j<m && a[i-2][j]=='4'){
+                        if(i-3>=0 && j<m && a[i-3][j]=='3') k++;
+                        if(i-2>=0 && j+1<m && a[i-2][j+1]=='3') k++;
+                    } 
+                    if(i-1>=0 && j+1<m && a[i-1][j+1]=='4'){
+                        if(i-1>=0 && j+2<m && a[i-1][j+2]=='3') k++;
+                        if(i<n && j+1<m && a[i][j+1]=='3') k++;
+                    }
+                }
+
+                if(i<n && j-1>=0 && a[i][j-1]=='5' ){
+                    if(i<n && j-2>=0 && a[i][j-2]=='4'){
+                        if(i<n && j-3>=0 && a[i][j-3]=='3') k++;
+                        if(i-1>=0 && j-2>=0 && a[i-1][j-2]=='3') k++;
+                    } 
+                    if(i-1>=0 && j-1>=0 && a[i-1][j-1]=='4'){
+                        if(i-2>=0 && j-1>=0 && a[i-2][j-1]=='3') k++;
+                        if(i-1>=0 && j<m && a[i-1][j]=='3') k++;
+                    }
+                }
+
+                if(i<n && j+1<m && a[i][j+1]=='5' ){
+                    if(i<n && j+2<m && a[i][j+2]=='4'){
+                        if(i<n && j+3<m && a[i][j+3]=='3') k++;
+                        if(i+1<n && j+2<m && a[i+1][j+2]=='3') k++;
+                    } 
+                    if(i+1<n && j+1<m && a[i+1][j+1]=='4'){
+                        if(i+2<n && j+1<m && a[i+2][j+1]=='3') k++;
+                        if(i+1<n && j<m && a[i+1][j]=='3') k++;
+                    }
+                }
+            }
+        }
+
     }
-    int cnt=0;
-    dfs(adj,n);
-    cout<<scc.size()-1<<'\n';
+    cout << k << "\n";
+    
 }
 
 int32_t main()
 {
+
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(0);
 
     int tests = 1;
     cin >> tests;
-
     for (int i = 1; i <= tests; i++)
-    {
-        // cout << "#Case " << i << ": \n";
-        runCase();
-        ans.clear();
-    }
+        runCase(i);
+
     return 0;
 }

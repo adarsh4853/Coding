@@ -1,0 +1,5 @@
+Problems you have to solve:-
+
+Earning on bets - https://codeforces.com/contest/1979/problem/C
+Light switches - https://codeforces.com/problemset/problem/1993/C
+Photoshoot for gorilla - https://codeforces.com/contest/2000/problem/E

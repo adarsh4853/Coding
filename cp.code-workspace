@@ -30,7 +30,12 @@
 			"ranges": "cpp",
 			"span": "cpp",
 			"regex": "cpp",
-			"valarray": "cpp"
+			"valarray": "cpp",
+			"*.tcc": "cpp",
+			"any": "cpp",
+			"system_error": "cpp",
+			"chrono": "cpp",
+			"limits": "cpp"
 		}
 	}
 }

@@ -65,7 +65,7 @@ int main()
     d.erase(d.begin() + 3);              // erases single element
                                          // v.begin()-> iterator to the first element,v.end()-> iterator to the last element
 
-    for(auto it:d)
+    for (auto it : d)
     {
         cout << d.at(it) << '\n';
     }
@@ -74,9 +74,9 @@ int main()
     {
         cout << d.at(i) << '\n';
     }
-    auto it=d.begin();
+    auto it = d.begin();
     it++;
-    d.insert(it,83);
+    d.insert(it, 83);
 
     // d.front(),d.back(),d.empty()
 
@@ -101,8 +101,8 @@ int main()
     cout << "Size of stack: " << s.size() << endl; // 3
 
     cout << s.empty() << '\n';
-    //push,pop,top,size,empty all are O(1) independent of whether they are implemented on list,vector or deque.
-    //By default they are implemented using deque
+    // push,pop,top,size,empty all are O(1) independent of whether they are implemented on list,vector or deque.
+    // By default they are implemented using deque
 
     // queue
     // first in-first out,ex-a line of humans
@@ -113,7 +113,7 @@ int main()
     q.push(7.4);
 
     cout << "first element: " << q.front() << endl; // 1.000000
-    cout << "last element: " << q.back() << endl; // 7.400000
+    cout << "last element: " << q.back() << endl;   // 7.400000
     q.pop();                                        // pops first element i.e. 1
 
     // size,empty
@@ -160,8 +160,8 @@ int main()
     // inserts unique element and gives element in a ordered way
     // Set is implemented using RED-BLACK Tree
 
-    set<int> s1 = {1, 1, 1, 2, 2, 1, 2, 3, 2, 2, 1, 2, 1};//FOr element in increasing order
-    set<int,greater<int>> s2;//For elements in decreasing order
+    set<int> s1 = {1, 1, 1, 2, 2, 1, 2, 3, 2, 2, 1, 2, 1}; // For element in increasing order
+    set<int, greater<int>> s2;                             // For elements in decreasing order
 
     s1.insert(4);
     s1.insert(4);
@@ -173,7 +173,7 @@ int main()
     it1++;                               // it=it+1 is not supported in set and map
     advance(it1, 2);                     // use this instead of it=it+2
     s1.erase(it1);                       // s={2,3,4}
-    s1.erase(it1,s1.end());              //Erases all the elements from it1 till end
+    s1.erase(it1, s1.end());             // Erases all the elements from it1 till end
 
     // for printing
     for (auto it = s1.begin(); it != s1.end(); ++it)
@@ -202,13 +202,13 @@ int main()
     m1[1.2f] = "hello";   // 1.1f called key
     m1[2.6f] = "buffalo"; // 2.6 is treated as double thats why use 2.6f where f represents float
 
-    m2["hello"] = 6;//Inserts a item in map
+    m2["hello"] = 6; // Inserts a item in map
     m2["blow"] = 2;
     m2["world"] = 3724;
-    cout<<m2["Play"]<<'\n';
-    //If member accessed is not present in map then,
-    //1. If using square bracket then it inserst that item in the map
-    //2. If accessed using at function then it throws an exception
+    cout << m2["Play"] << '\n';
+    // If member accessed is not present in map then,
+    // 1. If using square bracket then it inserst that item in the map
+    // 2. If accessed using at function then it throws an exception
 
     m1.insert({9.1f, "flow"});
 
@@ -228,7 +228,7 @@ int main()
 
     // insert,erase,find,count-> O(log n)
 
-// Unordered Set
+    // Unordered Set
 
     unordered_set<int> us;
 
@@ -263,7 +263,7 @@ int main()
 
     // Erase an element
     us.erase(2);
-    auto it=us.find(8);
+    auto it = us.find(8);
     us.erase(*it);
 
     // Print elements after erasing
@@ -286,6 +286,6 @@ int main()
     {
         cout << "The unordered set is not empty." << endl;
     }
-    //insert,erase,count,find,size -> O(1) on average
+    // insert,erase,count,find,size -> O(1) on average
     return 0;
 }

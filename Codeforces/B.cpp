@@ -5,20 +5,35 @@ using namespace std;
 //const int inf = (int)1e18;
 //const int mod = 1e9 + 7;
 
-void runCase()
+void runCase(int &testcase)
 {
-    int n;
-    cin>>n;
-    vector<int> v(n);
-    for(int i=0;i<n;i++) cin>>v[i];
-    vector<int> a,b;
-    for(int i=0;i<n;i++)
+    int n,k;
+    cin>>n>>k;
+    if(n==1)
     {
-        if(v[i]%2==0) a.push_back(v[i]);
-        else b.push_back(v[i]);
+        if(k==1) cout<<1<<'\n'<<1<<'\n';
+        else cout<<-1<<'\n';
+        return;
     }
-    if(is_sorted(a.begin(),a.end()) && is_sorted(b.begin(),b.end())) cout<<"YES\n";
-    else cout<<"NO\n";
+    if(k==n || k==1)
+    {
+        cout<<-1<<'\n';
+        return;
+    }
+    if((k-1)%2==0)
+    {
+        cout<<5<<'\n';
+        cout<<1<<' ';
+        cout<<k-1<<' ';
+        cout<<k<<' ';
+        cout<<k+1<<' ';
+        cout<<k+2<<'\n';
+    }
+    else
+    {
+        cout<<3<<'\n';
+        cout<<1<<' '<<k<<' '<<k+1<<'\n';
+    }
 }
 
 int32_t main()
@@ -31,8 +46,8 @@ int32_t main()
 
     for (int i = 1; i <= tests; i++)
     {
-        // cout << "#Case " << i << ": \n";
-        runCase();
+        // cout << "Case #" << i << ": \n";
+        runCase(i);
     }
     return 0;
 }
