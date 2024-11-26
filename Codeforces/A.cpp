@@ -7,25 +7,9 @@ using namespace std;
 
 void runCase(int &testcase)
 {
-    int n;
-    cin>>n;
-    vector<int> v(2*n);
-    int sum=0;
-    for(int i=0;i<2*n;i++)
-    {
-        cin>>v[i];
-        sum+=v[i];
-    }
-    if(sum%2!=0) cout<<1<<' ';
-    else cout<<0<<' ';
-    if(sum<=n)
-    {
-        cout<<sum<<'\n';
-    }
-    else
-    {
-        cout<<2*n%sum<<'\n';
-    }
+    cout<<(1*2^3*4^5*8)<<'\n';
+    cout<<(16^2)<< ' '<<(8^2)<<'\n';
+    cout<<
 }
 
 int32_t main()
@@ -34,7 +18,7 @@ int32_t main()
     cin.tie(nullptr);
 
     int tests = 1;
-    cin >> tests;
+    // cin >> tests;
 
     for (int i = 1; i <= tests; i++)
     {

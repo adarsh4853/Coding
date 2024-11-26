@@ -7,33 +7,7 @@ using namespace std;
 
 void runCase(int &testcase)
 {
-    int n,k;
-    cin>>n>>k;
-    if(n==1)
-    {
-        if(k==1) cout<<1<<'\n'<<1<<'\n';
-        else cout<<-1<<'\n';
-        return;
-    }
-    if(k==n || k==1)
-    {
-        cout<<-1<<'\n';
-        return;
-    }
-    if((k-1)%2==0)
-    {
-        cout<<5<<'\n';
-        cout<<1<<' ';
-        cout<<k-1<<' ';
-        cout<<k<<' ';
-        cout<<k+1<<' ';
-        cout<<k+2<<'\n';
-    }
-    else
-    {
-        cout<<3<<'\n';
-        cout<<1<<' '<<k<<' '<<k+1<<'\n';
-    }
+    
 }
 
 int32_t main()
