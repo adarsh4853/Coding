@@ -1,93 +1,38 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-int64_t inf = (int64_t)1e+18;
-int mod = 1000000007;
-#define int long long
 
-// @author: siddhant139
+using ll = long long;
 
-void runCase(int &testcase)
-{
-    int n, k=0,m;
-    cin >> n >> m ;
-    vector<string> a(n);
-    for (int i=0;i<n;i++) {
-        cin >> a[i]; 
-    }
-    // for(int i=0;i<n;i++){
-    //     for(int j=0;j+1<m;j++){ 
-    //         cout << a[i][j];
-    //     }
-    //     cout << "\n";
-    // }
+int main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
 
-    for(int i=0;i<n;i++){
-
-        for(int j=0;j<m;j++){
-            if(a[i][j]=='1') {
-                if(i+1<n && j<m && a[i+1][j]=='5' ){
-                    if(i+2<n && j<m && a[i+2][j]=='4'){
-                        if(i+3<n && j<m && a[i+3][j]=='3') {
-                            k++;
-                        }
-                        if(i+2<n && j-1>=0 && a[i+2][j-1]=='3') k++;
-                    } 
-                    if(i+1<n && j-1>=0 && a[i+1][j-1]=='4'){
-                        if(i<n && j-1>=0 && a[i][j-1]=='3') k++;
-                        if(i+1<n && j-2>=0 && a[i+1][j-2]=='3') k++;
-                    }
-                }
-
-                if(i-1>=0 && j<m && a[i-1][j]=='5' ){
-                    if(i-2>=0 && j<m && a[i-2][j]=='4'){
-                        if(i-3>=0 && j<m && a[i-3][j]=='3') k++;
-                        if(i-2>=0 && j+1<m && a[i-2][j+1]=='3') k++;
-                    } 
-                    if(i-1>=0 && j+1<m && a[i-1][j+1]=='4'){
-                        if(i-1>=0 && j+2<m && a[i-1][j+2]=='3') k++;
-                        if(i<n && j+1<m && a[i][j+1]=='3') k++;
-                    }
-                }
-
-                if(i<n && j-1>=0 && a[i][j-1]=='5' ){
-                    if(i<n && j-2>=0 && a[i][j-2]=='4'){
-                        if(i<n && j-3>=0 && a[i][j-3]=='3') k++;
-                        if(i-1>=0 && j-2>=0 && a[i-1][j-2]=='3') k++;
-                    } 
-                    if(i-1>=0 && j-1>=0 && a[i-1][j-1]=='4'){
-                        if(i-2>=0 && j-1>=0 && a[i-2][j-1]=='3') k++;
-                        if(i-1>=0 && j<m && a[i-1][j]=='3') k++;
-                    }
-                }
-
-                if(i<n && j+1<m && a[i][j+1]=='5' ){
-                    if(i<n && j+2<m && a[i][j+2]=='4'){
-                        if(i<n && j+3<m && a[i][j+3]=='3') k++;
-                        if(i+1<n && j+2<m && a[i+1][j+2]=='3') k++;
-                    } 
-                    if(i+1<n && j+1<m && a[i+1][j+1]=='4'){
-                        if(i+2<n && j+1<m && a[i+2][j+1]=='3') k++;
-                        if(i+1<n && j<m && a[i+1][j]=='3') k++;
-                    }
-                }
-            }
-        }
-
-    }
-    cout << k << "\n";
-    
-}
-
-int32_t main()
-{
-
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-
-    int tests = 1;
+    int tests;
     cin >> tests;
-    for (int i = 1; i <= tests; i++)
-        runCase(i);
-
-    return 0;
+    while (tests--) {
+        int n;
+        ll x;
+        cin >> n >> x;
+        vector<ll> a(n + 1);
+        for (int i = 1; i <= n; ++i) cin >> a[i];
+        partial_sum(a.begin() + 1, a.end(), a.begin() + 1);
+        // for (int i = 1; i <= n; ++i) cout << a[i] << ' ';
+        // cout<<'\n';
+        vector<int> dp(n + 2);
+        for (int i = n - 1; i >= 0; --i) {
+            int q = upper_bound(a.begin(), a.end(), a[i] + x) - a.begin();
+            dp[i] = dp[q] + q - i - 1;
+        }
+        cout << accumulate(dp.begin(), dp.end(), 0ll) << '\n';
+        vector<int> dp2(n + 2);
+        for (int i = 0; i < n; ++i) {
+            if(a[i]>x)
+            {
+                dp2[i]=0;
+                continue;
+            }
+            int q = upper_bound(a.begin(), a.begin() + i, x - a[i]) - a.begin();
+            dp2[i] = dp2[q] + q;
+        }
+        cout << accumulate(dp2.begin(), dp2.end(), 0ll) << '\n';
+    }
 }

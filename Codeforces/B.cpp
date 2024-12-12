@@ -7,7 +7,26 @@ using namespace std;
 
 void runCase(int &testcase)
 {
-    
+    int n;
+    cin>>n;
+    int temp=4;
+    int ans=2;
+    if(n==1)
+    {
+        cout<<1<<'\n';
+        return;
+    }
+    if(n==2)
+    {
+        cout<<2<<'\n';
+        return;
+    }
+    while(temp<n)
+    {
+        temp=temp*2+2;
+        ans++;
+    }
+    cout<<ans<<'\n';
 }
 
 int32_t main()

@@ -34,22 +34,53 @@ void runCase(int &testCase)
     // cout << "#Case " << testCase << ": \n";
     int t = rnd(1, 1);
     cout << t << "\n";
-    int n = rnd(3, 10);
-    cout << n << "\n";
+    // for(int i=0;i<n;i++)
+    // {
+    //     cout<<(char)('0'+rnd(0,1));
+    // }
+    // cout<<'\n';
     // int x = rnd(1, 100000000000000000);
     // cout << x << " ";
     // int y = rnd(1, 100000000000000000);
     // cout << y << "\n";
+    int n = rnd(1, 5);
+    cout << n << "\n";
+    // int k = rnd(1, 5);
+    // cout << k << "\n";
+
     vector<int> ans;
     for(int i=0;i<n;i++)
     {
-        // cout<<rnd(1,10)<<' ';
         ans.push_back(rnd(1,10));
-        // cout<<rnd(-10,-1)<<' '<<rnd(0,10)<<'\n';
+        cout<<ans[i]<<' ';
     }
-    sort(ans.begin(),ans.end());
-    for(int i=0;i<n;i++) cout<<ans[i]<<' ';
     cout<<'\n';
+    // set<pair<int,int>> ss;
+    // while(ss.size()<k)
+    // {
+    //     int a=rnd(0,n-1),b=rnd(0,n-1);
+    //     while(ans[a]==ans[b])
+    //     {
+    //         a=rnd(0,n-1);
+    //         b=rnd(0,n-1);
+    //     }
+    //     ss.insert({ans[a],ans[b]});
+    // }
+    // for(auto &x:ss)
+    // {
+    //     cout<<x.first<<' '<<x.second<<'\n';
+    // }
+    // for(int i=0;i<n;i++)
+    // {
+    //     // cout<<rnd(-100000,100000)<<' ';
+    //     cout<<(char)('0'+rnd(0,1));
+    //     // ans.push_back(rnd(1,10));
+    //     // cout<<rnd(-10,-1)<<' '<<rnd(0,10)<<'\n';
+    // }
+    // cout<<'\n';
+    // sort(ans.begin(),ans.end());
+    // for(int i=0;i<n;i++) cout<<ans[i]<<' ';
+    // cout<<'\n';
     // int a = rnd(1, 10);
     // cout << a << "\n";
     // for(int i=0;i<a;i++)
