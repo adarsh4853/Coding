@@ -44,9 +44,10 @@ void runCase(int &testCase)
     // int y = rnd(1, 100000000000000000);
     // cout << y << "\n";
     int n = rnd(1, 5);
+    n=2*n;
     cout << n << "\n";
-    // int k = rnd(1, 5);
-    // cout << k << "\n";
+    int k = rnd(1, 5);
+    cout << k << "\n";
 
     vector<int> ans;
     for(int i=0;i<n;i++)

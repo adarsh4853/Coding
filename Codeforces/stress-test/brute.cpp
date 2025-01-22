@@ -1,53 +1,49 @@
-//#pragma GCC optimize("Ofast,unroll-loops")
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long llo;
-#define mp make_pair
-#define pb push_back
-#define a first 
-#define b second
-#define endl '\n'
+#define int long long
 
-llo t;
-llo it[2001];
-llo pre[2001];
-int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cin>>t;
-	while(t--){
-		llo n;
-		cin>>n;
-		pre[0]=0;
-		for(llo i=0;i<n;i++){
-			cin>>it[i];
-			pre[i+1]=pre[i]^it[i];
-		}
-		llo st=1;
-		for(llo i=0;i<n-1;i++){
-			if(pre[n]==0){
-				st=0;
+//const int inf = (int)1e18;
+//const int mod = 1e9 + 7;
+
+void runCase(int &testcase)
+{
+    int n,k;
+    cin>>n>>k;
+    vector<int> v(n);
+    for(int i=0;i<n;i++) cin>>v[i];
+    map<int,int> mpp;
+    for(int i=0;i<n;i++) mpp[v[i]]++;
+    int ans=0;
+    for(int i=0;i<n;i++)
+    {
+        if(mpp.find(v[i])!=mpp.end())
+        {
+            mpp[v[i]]--;
+			if(mpp[v[i]]==0) mpp.erase(v[i]);
+			if(mpp.find(k-v[i])!=mpp.end()) 
+			{
+				mpp[k-v[i]]--;
+				if(mpp[k-v[i]]==0) mpp.erase(k-v[i]);
+				// cout<<v[i]<<' '<<k-v[i]<<'\n';
+				ans++;
 			}
-			for(llo j=i+1;j<n-1;j++){
-				if(pre[i+1]==pre[n] and pre[j+1]==0){
-					st=0;
-				}
-			}
-		}
-		if(st==0){
-			cout<<"YES"<<endl;
-		}
-		else{
-			cout<<"NO"<<endl;
-		}
-	}
-
-
-
-
-
- 
- 
-	return 0;
+        }
+    }
+    cout<<ans<<'\n';
 }
- 
+
+int32_t main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int tests = 1;
+    cin >> tests;
+
+    for (int i = 1; i <= tests; i++)
+    {
+        // cout << "Case #" << i << ": \n";
+        runCase(i);
+    }
+    return 0;
+}

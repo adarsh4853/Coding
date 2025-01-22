@@ -2,104 +2,93 @@
 using namespace std;
 #define int long long
 
-// const int inf = (int)1e18;
-// const int mod = 1e9 + 7;
+//const int inf = (int)1e18;
+//const int mod = 1e9 + 7;
+
+struct DSU {
+    vector<int> par, rnk, sz;
+    int c;
+    DSU(int n) : par(n + 1), rnk(n + 1, 0), sz(n + 1, 1), c(n) {
+        for (int i = 1; i <= n; ++i) par[i] = i;
+    }
+    int find(int i) {
+        return (par[i] == i ? i : (par[i] = find(par[i])));
+    }
+    bool same(int i, int j) {
+        return find(i) == find(j);
+    }
+    int get_size(int i) {
+        return sz[find(i)];
+    }
+    int count() {
+        return c; // connected components
+    }
+    int join(int i, int j) {
+        if ((i = find(i)) == (j = find(j)))
+            return -1;
+        else
+            --c;
+        if (rnk[i] > rnk[j]) swap(i, j);
+        par[i] = j;
+        sz[j] += sz[i];
+        if (rnk[i] == rnk[j]) rnk[j]++;
+        return j;
+    }
+};
+
+int dfs(vector<vector<int>> &adj,int i,vector<bool> &vis,vector<int> &ans)
+{
+    vis[i]=true;
+    for(auto &u:adj[i])
+    {
+        if(!vis[u])
+        {
+            ans[u]=!ans[i];
+            int val=dfs(adj,u,vis,ans);
+            if(val==-1) return -1;
+        }
+        else if(ans[u]==ans[i])
+        {
+            return -1;
+        }
+    }
+    return 1;
+}
 
 void runCase(int &testcase)
 {
-    int n;
-    cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
-        cin >> v[i];
-    int temp = n;
-    set<int> s1, s2;
-    vector<pair<int, int>> ans;
-    int c1 = 0, c2 = 0;
-    for (int i = 0; i < n; i++)
+    int n,m,val;
+    cin>>n>>m;
+    vector<vector<int>> adj(n+1);
+    for(int i=0;i<m;i++)
     {
-        if (v[i] == 1)
+        int x,y;
+        cin>>x>>y;
+        adj[x].push_back(y);
+        adj[y].push_back(x);
+    }
+    vector<bool> vis(n+1);
+    vector<int> ans(n+1,-1);
+    for(int i=1;i<=n;i++)
+    {
+        if(!vis[i])
         {
-            c1++;
-            s1.insert(i);
-            if (c2 != 0)
-            {
-                ans.push_back({*s2.begin()+1, i+1});
-                v[i] = 2;
-                v[*s2.begin()] = 1;
-                s1.erase(i);
-                s1.insert(*s2.begin());
-                s2.erase(*s2.begin());
-                s2.insert(i);
-            }
-        }
-        else if (v[i] == 2)
-        {
-            c2++;
-            s2.insert(i);
+            ans[i]=1;
+            vis[i]=1;
+            val=dfs(adj,i,vis,ans);
         }
     }
-    for (int i = n - 1; i >= 0; i--)
+    if(val==-1)
     {
-        if (v[i] == 0)
-        {
-            if (c1 == 0 && c2 == 0)
-            {
-                continue;
-            }
-            else if (c2 == 0)
-            {
-                if(*s1.begin()>i) continue;
-                ans.push_back({*s1.begin() + 1, i + 1});
-                // cout<<*s1.begin()+1<<' '<<i+1<<'\n';
-                s1.erase(s1.begin());
-                s1.insert(i);
-            }
-            else
-            {
-                if (c1 != 0)
-                {
-                    if(*s1.begin()>i) continue;
-                    ans.push_back({*s1.begin() + 1, i + 1});
-                    // cout<<*s1.begin()+1<<' '<<i+1<<'\n';
-                    s1.erase(s1.begin());
-                    s1.insert(i);
-                }
-                if(*s2.begin()>i) continue;
-                ans.push_back({*s2.begin() + 1, i + 1});
-                // cout<<*s2.begin()+1<<' '<<i+1<<'\n';
-                s1.erase(i);
-                s1.insert(*s2.begin());
-                s2.erase(s2.begin());
-                s2.insert(i);
-            }
-        }
-        else if (v[i] == 1)
-        {
-            c1++;
-            s1.insert(i);
-            if (c2 != 0)
-            {
-                if(*s2.begin()>i) continue;
-                ans.push_back({*s2.begin() + 1, i + 1});
-                // cout<<*s2.begin()+1<<' '<<i+1<<'\n';
-                s1.erase(i);
-                s1.insert(*s2.begin());
-                s2.erase(s2.begin());
-                s2.insert(i);
-            }
-        }
-        else
-        {
-            c2++;
-            s2.insert(i);
-        }
+        cout<<"IMPOSSIBLE"<<'\n';
+        return;
     }
-    cout << ans.size() << '\n';
-    for (int i = 0; i < ans.size(); i++)
+    for(int i=1;i<=n;i++)
     {
-        cout << ans[i].first << ' ' << ans[i].second << '\n';
+        if(ans[i]==1) cout<<1<<' ';
+        else cout<<2<<' ';
     }
+    cout<<'\n';
 }
 
 int32_t main()
@@ -108,7 +97,7 @@ int32_t main()
     cin.tie(nullptr);
 
     int tests = 1;
-    cin >> tests;
+    // cin >> tests;
 
     for (int i = 1; i <= tests; i++)
     {
